@@ -1,0 +1,24 @@
+You are in the index ( LOGGED IN !)
+5*5 is <%= 5*5 %>
+
+
+<h1>When will you consume these data?</h1>
+<% form_for @daily_download do |f| %>
+	<%= f.text_field :title%>
+	<%= select_time() %>
+  <br />
+  <%= f.submit "Set Time!" %>
+<% end %>
+
+
+<ul>
+	<% for daily_download in @daily_downloads %>	
+	<div>
+		<h2><%= daily_download.title%></h2>
+		<p>
+			<%= link_to "add download source", new_daily_download_download_source_url( daily_download )%>
+			<br />
+		</p>
+	</div>
+	<% end %>
+</ul>
