@@ -6,18 +6,23 @@ module Avaxhome
   URL = "http://avaxhome.ws"
   
   # def initialize(options)
-  #   if options[:page_limit]
-  #     @page_limit = options[:page_limit]
-  #   else
-  #     puts "There is no page limit, so, default is 20"
-  #     @page_limit = 20
-  #   end
+    # if options[:page_limit]
+    #   @page_limit = options[:page_limit]
+    # else
+    #   puts "There is no page limit, so, default is 20"
+    #   @page_limit = 20
+    # end
   #   
   #  
   # end
   
-  def init
-    @page_limit = 20
+  def init(options )
+    if options[:page_limit]
+      @page_limit = options[:page_limit]
+    else
+      puts "There is no page limit, so, default is 20"
+      @page_limit = 20
+    end
     @agent = Mechanize.new
     @agent.keep_alive = false;
     @agent.user_agent = "Yahoo Spider"
@@ -25,9 +30,9 @@ module Avaxhome
     @agent.get(URL)
   end
   
-  def start_download
+  def start_download(options)
     download_result = []
-    init
+    init( options )
     page = @agent.page
     page_count = 0
     
@@ -38,7 +43,7 @@ module Avaxhome
 
         title= result.text
         href = result.attribute('href')
-        page_data.push( {:title => title, :href => href})
+        page_data.push( {:title => title, :href => URL + href.to_s})
         puts "Title: #{title}"
         puts "URI= #{URL}#{href}"
         puts "========"*2 + "\n"
