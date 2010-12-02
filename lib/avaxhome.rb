@@ -5,17 +5,6 @@ module Avaxhome
   attr_accessor :page_limit, :agent
   URL = "http://avaxhome.ws"
   
-  # def initialize(options)
-    # if options[:page_limit]
-    #   @page_limit = options[:page_limit]
-    # else
-    #   puts "There is no page limit, so, default is 20"
-    #   @page_limit = 20
-    # end
-  #   
-  #  
-  # end
-  
   def init(options )
     if options[:page_limit]
       @page_limit = options[:page_limit]

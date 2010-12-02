@@ -3,4 +3,4 @@ User.create(:email => "rajakuraemas@gmail.com",
             :password_confirmation => "willy"
 )
 
-DailyDownload.create(:title => "Avaxhome")
+DailyDownload.create(:title => "Avaxhome", :page_limit => 1)
