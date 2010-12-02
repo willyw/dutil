@@ -8,6 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem "authlogic"
+  config.gem "delayed_job"
 
   config.time_zone = 'UTC'
 end
